@@ -1,0 +1,15 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.form-container div{
+    margin-top: 5px;
+    margin-left: 5px;
+    align-items: center;
+    display: flex;
+}
+.form-container div input{
+
+}
