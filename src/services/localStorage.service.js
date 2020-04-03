@@ -1,10 +1,8 @@
 export const createStorage = (storageName) => {
     localStorage.setItem(storageName, JSON.stringify([]));
-    console.log('create storage')
 }
 
 export const getFromStorage = (storageName) => {
-    console.log('get storage')
     let storage = localStorage.getItem(storageName)
     if (!storage) {
         createStorage(storageName)
@@ -17,7 +15,6 @@ export const pushToStorage = (storageName, item) => {
     const storage = getFromStorage(storageName);
     storage.push(item);
     localStorage.setItem(storageName, JSON.stringify(storage));
-    console.log('pushed to ls!')
 }
 
 export const deleteItemFromStorage = (storageName, itemId) => {
@@ -27,7 +24,19 @@ export const deleteItemFromStorage = (storageName, itemId) => {
         throw new Error('Item not found');
     }
     items.splice(index, 1);
-    console.log('remove from storage', items);
     localStorage.setItem(storageName, JSON.stringify(items));
 }
 
+export const deleteStoregeByName = (storageName) =>{
+    localStorage.removeItem(storageName)
+}
+
+export const checkAvailability = (storageName) =>{
+
+  let storage = localStorage.getItem(storageName)
+  if (storage){
+      return true
+  }
+  return false
+
+}

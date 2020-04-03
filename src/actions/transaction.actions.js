@@ -7,9 +7,8 @@ export const ACTION_TYPES = {
 }
 export const addTransaction = (payload) => (dispatch, getState) => {
     try {
-        const transactions = transactionService.listAllTransactions();
         transactionService.addTransaction(payload);
-        console.log(payload)
+        const transactions = transactionService.listAllTransactions();
         return dispatch({
             type: ACTION_TYPES.LIST_ALL_TRANSACTIONS,
             transactions: [...transactions]
@@ -22,7 +21,6 @@ export const addTransaction = (payload) => (dispatch, getState) => {
 export const listAllTransactions = () => (dispatch, getState) => {
     try {
         const transactions = transactionService.listAllTransactions();
-        console.log('LISTALL', transactions);
         return dispatch({
             type: ACTION_TYPES.LIST_ALL_TRANSACTIONS,
             transactions: [...transactions]

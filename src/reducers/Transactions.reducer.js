@@ -7,7 +7,6 @@ const initialState = {
 export default function transactionReducer(state = initialState, action) {
     switch (action.type) {
         case ACTION_TYPES.LIST_ALL_TRANSACTIONS:
-            console.log('get transactions')
             return {
                 ...state,
                 transactions: [...action.transactions]
@@ -24,7 +23,6 @@ export default function transactionReducer(state = initialState, action) {
                 transactions
             }
         default:
-            console.log('default')
             return {...state}
     }
 }

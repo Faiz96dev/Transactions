@@ -3,6 +3,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/transaction.actions';
 import './addTransactions.css';
+import Button from 'react-bootstrap/Button' 
+import Form from 'react-bootstrap/Form'
+import {ToastsStore} from 'react-toasts';
+import Loader from '../loader/Loader'
+
 
 class AddTransactions extends React.Component {
     constructor(props) {
@@ -10,41 +15,65 @@ class AddTransactions extends React.Component {
         this.state = {
             inputVal: 23,
             selectorVal: 'Halyk',
-            bankId: 3
+            banks:[]
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.setSelectorValue = this.setSelectorValue.bind(this);
+ 
+    }
+    
+    componentDidMount(){
+        this.getBanks()
     }
 
-    handleChange(e) {
+    getBanks= ()=>{
+        setTimeout(()=>{
+            this.setState({banks: [
+                {value:'Halyk', display:'Halyk'},
+                {value:'Kyrgyzstan', display:'Kyrgyzstan'},
+                {value:'Demir', display:'Demir'}
+            ]
+        
+        })
+        }, 4000)
+    }
+    handleChange = e => {
         this.setState({inputVal: e.target.value})
     }
 
-    handleSubmit(e) {
+    handleSubmit = e => {
+        if (!this.state.inputVal && !this.state.selectorVal){
+            ToastsStore.success("Fill in all the fields!")
+            return
+        }
         let payload = {
             amount: this.state.inputVal ,
             bankId: this.state.selectorVal ,
         }
         this.props.actions.addTransaction(payload)
-        // e.preventDefault()
+        this.state.inputVal = ''
+        this.state.selectorVal = ''
+       
     }
 
-    setSelectorValue(e) {
+    setSelectorValue = e => {
         this.setState({selectorVal: e.target.value})
     }
 
     render() {
         return (
             <div className="form-container">
-                <div><p>amount:</p><input onChange={this.handleChange} value={this.state.inputVal} type="number"/></div>
-                <div><p>bank:</p><select value={this.state.selectorVal} onChange={this.setSelectorValue} id="cars">
-                    <option value="volvo">Halyk</option>
-                    <option value="saab">Kyrgyzstan</option>
-                    <option value="mercedes">Demir</option>
-                </select></div>
-                <button onClick={this.handleSubmit}>Add</button>
+              
+              
+                <Form.Control  onChange={this.handleChange} value={this.state.inputVal} type="number" placeholder="Amount" />
+<Loader/>
+                <div><p>bank:</p>
+                <select value={this.state.selectorVal} onChange={this.setSelectorValue}>
+        {this.state.banks.map((i) => <option  key={i.value} value={i.value}>{i.display}</option>)}
+      </select>
+                
+  
+                </div>
+                <Button onClick={this.handleSubmit} variant="secondary">Add</Button>
             </div>
         );
     }

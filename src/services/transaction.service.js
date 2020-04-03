@@ -7,10 +7,6 @@ export const addTransaction = (payload) => {
     }
     let transactions = localStorageService.getFromStorage(STORAGE_NAME)
     let id = transactions.length
-    console.log(transactions)
-    if (id === 0) {
-        id = 1
-    }
     if (id > 0) {
         id = id++
     }
@@ -18,8 +14,6 @@ export const addTransaction = (payload) => {
         ...payload,
         id:id
     }
-    console.log('Push to storage')
-    console.log(obj)
     localStorageService.pushToStorage(STORAGE_NAME, obj);
 };
 

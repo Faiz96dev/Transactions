@@ -1,0 +1,23 @@
+.list_container{
+  width: 100%;
+}
+.list_item{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+    padding: 6px;
+    align-items: center;
+    background-color: #17a3b855;
+    border-radius: 5px;
+}
+
+
+
+.list_item p{
+    margin-bottom: 0;
+}
+
+.area{
+    height: 70vh;
+}
+
