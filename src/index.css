@@ -2,5 +2,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #0d1639
 }
 
+button{
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #23760b;
+  background-color: #99e3c4;
+}
+
+.delete{
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  background-color: #fd5b5b;
+}

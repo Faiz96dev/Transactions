@@ -1,13 +1,9 @@
 import React from "react";
 import "./List.css";
-import Button from 'react-bootstrap/Button'
 import ScrollArea from 'react-scrollbar'
-
-
+import amount from '../../../assets/img/amount.png'
 
  const List = props => {
-
-    
 
     return (
         <div>
@@ -19,8 +15,8 @@ import ScrollArea from 'react-scrollbar'
        <div className="list_container">
             {props.transactions.map((transaction, index) =>
               <div className="list_item" key={index}>
-                <p>id: {transaction.id}</p> <p>bank: {transaction.bankId}</p> <p>amount: {transaction.amount}</p> 
-                <Button onClick={() => props.deleteTransactionById(transaction.id)} variant="info">Delete</Button>{' '}
+                <p>id: {transaction.id}</p> <p>bank: {transaction.bankId}</p> <p><img className="amount" src={amount} />{transaction.amount}</p> 
+                <button onClick={() => props.deleteTransactionById(transaction.id)} className='delete' >Delete</button>{' '}
               </div>)}
         </div>
       </ScrollArea>

@@ -11,7 +11,10 @@
     border-radius: 5px;
 }
 
-
+.amount{
+    height: auto;
+    width: 30px;
+}
 
 .list_item p{
     margin-bottom: 0;

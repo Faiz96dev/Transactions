@@ -6,7 +6,7 @@ import * as authActions from '../../actions/auth.actions';
 import '../Main/Main.css';
 import AddTransactions from "../addTransactions/addTransactions";
 import List from '../list/List';
-import Button from 'react-bootstrap/Button'
+
 import {ToastsContainer, ToastsStore} from 'react-toasts';
  
 
@@ -22,9 +22,9 @@ class Manager extends React.Component {
        <div className="App">
           <ToastsContainer store={ToastsStore}/>
         <div className="App-header">
-          <div> 
-        <Button  onClick={() => {this.props.authActions.removeAuth()}} variant="info">Log Out</Button>
-          </div>
+         
+        <button className="log_out" onClick={() => {this.props.authActions.removeAuth()}} variant="info">Log Out</button>
+        
           <h2>Welcome to Transaction manager</h2>
         </div>
         <AddTransactions/>
